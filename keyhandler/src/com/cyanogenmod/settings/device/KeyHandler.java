@@ -44,6 +44,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManagerGlobal;
+import android.content.pm.PackageManager;
 
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
@@ -154,6 +155,14 @@ public class KeyHandler implements DeviceKeyHandler {
                 }
                 mPowerManager.wakeUp(SystemClock.uptimeMillis());
                 Intent intent = new Intent(action, null);
+                String launchPackageName = FileUtils.readOneLine("/data/data/com.cyanogenmod.settings.device/LaunchPackage");
+				Log.e("KeyHandler", "packagename: " + launchPackageName);
+				if(launchPackageName != null && !launchPackageName.equals("") ){
+					Intent newIntent = mContext.getPackageManager().getLaunchIntentForPackage(launchPackageName);
+					if(newIntent != null){
+						intent = newIntent;
+					}
+				}
                 startActivitySafely(intent);
                 doHapticFeedback();
                 break;

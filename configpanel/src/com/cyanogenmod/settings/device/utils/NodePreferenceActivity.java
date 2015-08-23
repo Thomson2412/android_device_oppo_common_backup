@@ -24,6 +24,9 @@ import android.preference.SwitchPreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
+import android.app.FragmentManager;
+import android.app.DialogFragment;
+
 public class NodePreferenceActivity extends PreferenceActivity
         implements OnPreferenceChangeListener {
 
@@ -39,6 +42,14 @@ public class NodePreferenceActivity extends PreferenceActivity
         if (!TextUtils.isEmpty(node)) {
             Boolean value = (Boolean) newValue;
             FileUtils.writeLine(node, value ? "1" : "0");
+			if (preference.getKey().equals("touchscreen_gesture_camera")) {
+				if(value){
+					DialogFragment packageDialog = new PackageDialog();
+					packageDialog.show(getFragmentManager(), "packageDialog");
+				} else{
+					
+				}
+			}
             return true;
         }
         return false;
