@@ -30,6 +30,29 @@
         android:key="touchscreen_gesture_flashlight"
         android:title="@string/touchscreen_flashlight_gesture_title"
         android:summary="@string/touchscreen_flashlight_gesture_summary" />
+        
+    <PreferenceCategory android:title="haptic_feedback_test">
+
+        <SwitchPreference
+            android:key="touchscreen_haptic_feedback"
+            android:title="haptic_feedback"
+            android:summary="haptic_feedback_summary" />
+
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="haptic_feedback_test">
+
+        <ListPreference
+            android:key="touchscreen_camera_launch_intent"
+            android:title="luanch_intent"
+            android:summary="luanch_intent_feedback_summary" />
+            
+        <ListPreference
+            android:key="touchscreen_torch_launch_intent"
+            android:title="luanch_intent"
+            android:summary="luanch_intentfeedback_summary" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/touchscreen_extras">
 
